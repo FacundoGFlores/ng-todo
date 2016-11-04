@@ -11,6 +11,7 @@ import { Item } from '../shared/item';
 export class HomeComponent implements OnInit {
   myForm: FormGroup;
   uri: string;
+  saving: boolean;
 
   item = new Item();
   _items: Item[];
@@ -36,8 +37,10 @@ export class HomeComponent implements OnInit {
     if (!isValid) {
       alert('Check values!');
     }
+    this.saving = true;
     this.itemsService.sendItem(value)
       .subscribe((r) => {
+        this.saving = false;
         this.uri = r.uri;
         this.itemsService.getItems(this.uri)
           .subscribe((i) => this._items = i);

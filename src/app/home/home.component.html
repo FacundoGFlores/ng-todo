@@ -1,23 +1,27 @@
-<h3>List of tasks</h3>
-<fieldset>
-  <legend>Add new Task</legend>
+<md-toolbar color="primary">
+  Angular Material2 TODO App
+</md-toolbar>
+<md-card>
   <form [formGroup]="myForm" (ngSubmit)="save(myForm.value, myForm.valid)">
     <div class="form-field">
-      <label>ID: </label>
-      <input formControlName="id">
+      <md-input formControlName="id" placeholder="ID"></md-input>
     </div>
     <div class="form-field">
-      <label>Title: </label>
-      <input formControlName="title">
+      <md-input formControlName="title" placeholder="Title"></md-input>
     </div>
     <div class="form-field">
-      <label>Description: </label>
-      <textarea formControlName="description"></textarea>
+      <md-input formControlName="description" placeholder="Description"></md-input>
     </div>
-    <button type="submit">Submit</button>
+    <br>
+    <button type="submit" md-raised-button color="primary">Submit</button>
+    <md-progress-bar
+            *ngIf="saving"
+            class="app-progress"
+            mode="indeterminate"
+            aria-label="Indeterminate progress-bar example"
+            style="margin-top:2%;"></md-progress-bar>
   </form>
-  
-</fieldset>
+</md-card>
 
 <div class="debug">
   {{_items|json}}
