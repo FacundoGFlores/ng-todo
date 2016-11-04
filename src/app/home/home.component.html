@@ -1,0 +1,25 @@
+<h3>List of tasks</h3>
+<fieldset>
+  <legend>Add new Task</legend>
+  <form [formGroup]="myForm" (ngSubmit)="save(myForm.value, myForm.valid)">
+    <div class="form-field">
+      <label>ID: </label>
+      <input formControlName="id">
+    </div>
+    <div class="form-field">
+      <label>Title: </label>
+      <input formControlName="title">
+    </div>
+    <div class="form-field">
+      <label>Description: </label>
+      <textarea formControlName="description"></textarea>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+  
+</fieldset>
+
+<div class="debug">
+  {{_items|json}}
+</div>
+
